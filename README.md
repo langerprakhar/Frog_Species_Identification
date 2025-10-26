@@ -1,11 +1,10 @@
-Frog Species Identification Using CNN (MobileNetV2)
-Problem Statement
+**Frog Species Identification Using CNN (MobileNetV2)**
+**Problem Statement**
 
-Accurate identification of frog species is critical for biodiversity studies and conservation efforts. Traditional identification methods are labor-intensive and require expert taxonomic knowledge. This project aims to automate frog species identification in India by combining image classification with descriptive feature matching, using a Convolutional Neural Network (CNN) based on MobileNetV2.
+Accurate identification of frog species is critical for biodiversity studies and conservation efforts. Traditional identification methods are labor-intensive and require expert taxonomic knowledge. This project automates frog species identification in India by combining image classification with descriptive feature matching, using a Convolutional Neural Network (CNN) based on MobileNetV2.
 
-Dataset
-
-Sources:
+**Dataset**
+**Sources**
 
 iNaturalist (via pyinaturalist API)
 
@@ -13,7 +12,7 @@ AmphibiaWeb
 
 Pexels API (for species with no available images)
 
-Content:
+**Content**
 
 Images of 210 Indian frog species
 
@@ -21,19 +20,19 @@ Manually curated and organized into folders named after each species
 
 Data augmentation applied (flipping, rotation, noise addition, brightness adjustment) to increase dataset diversity
 
-Data Format:
+**Data Format**
 
 Training and validation images stored in separate directories
 
 Each species folder contains its respective images
 
-Model Architecture
+**Model Architecture**
 
 Base Model: MobileNetV2 (pretrained on ImageNet, include_top=False)
 
 Chosen for efficiency and accuracy, suitable for real-time applications
 
-Custom Layers:
+**Custom Layers**
 
 GlobalAveragePooling2D
 
@@ -41,11 +40,13 @@ Dense layer with 1024 units, ReLU activation
 
 Output layer with softmax activation for classification
 
-Transfer Learning:
+**Transfer Learning**
 
 Base layers frozen during initial training
 
 Fine-tuned later with a reduced learning rate to improve species-specific accuracy
+
+**Training Configuration**
 
 Optimizer: Adam
 
@@ -53,13 +54,13 @@ Loss Function: Categorical Crossentropy
 
 Input Image Size: 224x224x3
 
-Preprocessing
+**Preprocessing**
 
 Image Resizing: All images resized to 224x224
 
 Normalization: Pixel values scaled to [0,1]
 
-Augmentation:
+**Augmentation Techniques**
 
 Horizontal and vertical flips
 
@@ -69,11 +70,12 @@ Additive Gaussian noise
 
 Brightness adjustments
 
-Implementation
+**Implementation**
+Framework
 
-Framework: TensorFlow + Keras
+TensorFlow + Keras
 
-Key Steps:
+**Key Steps**
 
 Load and preprocess dataset
 
@@ -91,7 +93,7 @@ Combine image classification with fuzzy string matching for feature-based identi
 
 Display results with frog images and species information
 
-Feature Matching:
+**Feature Matching**
 
 User-provided descriptors (type locality, coloration, leg length, skin type, elevation) matched to dataset using fuzzy string matching (fuzzywuzzy)
 
@@ -99,22 +101,22 @@ Decision logic prioritizes feature-based match if model confidence is below 0.75
 
 Instructions for Running the Code
 
-Place your frog images in the frog_images_per_head folder, organized by species.
+Place your frog images in the frog_images_per_head folder, organized by species
 
-Ensure the Excel file CpiFinal.xlsx with species information is in the working directory.
+Ensure the Excel file CpiFinal.xlsx with species information is in the working directory
 
-Load the pretrained model frog_species_classifier1.keras.
+Load the pretrained model frog_species_classifier1.keras
 
 Run the main script:
 
 python frog_species_identifier.py
 
 
-Provide the image filename and feature descriptions when prompted.
+Provide the image filename and feature descriptions when prompted
 
-The program displays the matched frog species image and detailed information.
+The program displays the matched frog species image and detailed information
 
-Evaluation Metrics and Results
+**Evaluation Metrics and Results**
 
 Accuracy: High accuracy achieved with MobileNetV2 on augmented dataset
 
@@ -122,9 +124,8 @@ Decision Logic: Combines CNN confidence with fuzzy feature matching to improve i
 
 Visualization: Predicted species displayed with its image and all 22 dataset attributes
 
-Insights & Challenges
-
-Challenges:
+**Insights & Challenges**
+Challenges
 
 Limited availability of images for certain species
 
@@ -132,7 +133,7 @@ Need for robust augmentation to handle intra-species variability
 
 Aligning image-based and feature-based identification results
 
-Solutions:
+**Solutions**
 
 Used Pexels API for species with no images
 
@@ -140,13 +141,13 @@ Applied multiple augmentation techniques
 
 Implemented fuzzy string matching to handle partial or approximate feature inputs
 
-Outcome:
+**Outcome**
 
 Automated identification system capable of recognizing 210 Indian frog species
 
 Supports conservation studies and real-time field applications
 
-References
+**References**
 
 MobileNetV2: Howard et al., 2017
 
